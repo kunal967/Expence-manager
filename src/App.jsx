@@ -1,8 +1,9 @@
 import React from "react";
-import { Grid } from "@material-ui/core";
+import { Card, CardContent, Grid } from "@material-ui/core";
 import Details from "./components/Details/Details";
 import Transactions from "./components/transaction/Transactions";
 import useStyles from './components/Details/style'
+import List from "./components/List/List";
 
 function App() {
   const classes = useStyles()
@@ -22,6 +23,13 @@ function App() {
           </Grid>
           <Grid >
             <Transactions />
+          </Grid>
+          <Grid >
+            <Card spacing={2}>
+              <CardContent  className={classes.CardContent}>
+                <List/>
+              </CardContent>
+            </Card>
           </Grid>
         </Grid>
       </Grid>

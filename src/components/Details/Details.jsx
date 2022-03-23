@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardHeader, CardContent, Typography } from "@material-ui/core";
+import { Divider, Card, CardHeader, CardContent, Typography } from "@material-ui/core";
 import makeStyles from './style'
 
 const Details = () => {
@@ -12,6 +12,7 @@ const Details = () => {
           subheader="Keep Track of your Expences"
           style={{ textAlign: "center" }}
         />
+        <Divider />
         <CardContent>
           <Typography align="center" variant="h5">
             Balance : 50
