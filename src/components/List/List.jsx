@@ -45,12 +45,12 @@ const List = () => {
               primary={transaction.category}
               secondary={`₹${transaction.amount} - ${transaction.date}`}
             >
+            </ListItemText>
               <ListItemSecondaryAction>
-                <IconButton edge="end" aria-label="delete">
+                <IconButton edge="end" aria-label="delete" onClick={()=>deleteTransaction(transaction.id)}>
                   <Delete/>
                 </IconButton>
               </ListItemSecondaryAction>
-            </ListItemText>
           </ListItem>
         </Slide>
       ))}

@@ -11,30 +11,36 @@ import {
   TextField,
   Button,
 } from "@material-ui/core";
-import { v4 as uuidv4 } from 'uuid'
+import { v4 as uuidv4 } from "uuid";
 import useStyle from "./style";
 import { ExpenseContext } from "../../context/Context";
+import { expenseCategories, incomeCategories } from "../../constants/constant";
 
 const initialState = {
   amount: "",
   category: "",
-  type: "income",
+  type: "Income",
   date: new Date(),
 };
 
 const Transactions = () => {
   const classes = useStyle();
   const [formData, setFormData] = useState(initialState);
-  const { addTransaction } = useContext(ExpenseContext)
+  const { addTransaction } = useContext(ExpenseContext);
 
-  const createTransation = () =>{
-    
-    const transaction = {...formData, amount: Number(formData.amount), id: uuidv4() }
+  const createTransation = () => {
+    const transaction = {
+      ...formData,
+      amount: Number(formData.amount),
+      id: uuidv4(),
+    };
 
-    addTransaction(transaction)
-    setFormData(initialState)
-    
-  }
+    addTransaction(transaction);
+    setFormData(initialState);
+  };
+
+  const categories =
+    formData.type === "Income" ? incomeCategories : expenseCategories;
 
   return (
     <div>
@@ -70,9 +76,12 @@ const Transactions = () => {
                   }
                   label="Source"
                 >
-                  <MenuItem value="business">Business</MenuItem>
-                  <MenuItem value="salary">Salary</MenuItem>
-                  <MenuItem value="other">other</MenuItem>
+                  {categories.map((c) => (
+                    <MenuItem value={c.type} key={c.type}>
+                      {" "}
+                      {c.type}{" "}
+                    </MenuItem>
+                  ))}
                 </Select>
               </FormControl>
             </Grid>
