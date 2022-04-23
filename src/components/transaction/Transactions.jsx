@@ -15,6 +15,7 @@ import { v4 as uuidv4 } from "uuid";
 import useStyle from "./style";
 import { ExpenseContext } from "../../context/Context";
 import { expenseCategories, incomeCategories } from "../../constants/constant";
+import CustomizedSanckbar from "../Snackbar/sanckbar";
 
 const initialState = {
   amount: "",
@@ -27,6 +28,7 @@ const Transactions = () => {
   const classes = useStyle();
   const [formData, setFormData] = useState(initialState);
   const { addTransaction } = useContext(ExpenseContext);
+  const [open , setOpen] = useState(false)
 
   const createTransation = () => {
     const transaction = {
@@ -35,6 +37,7 @@ const Transactions = () => {
       id: uuidv4(),
     };
 
+    setOpen(true)
     addTransaction(transaction);
     setFormData(initialState);
   };
@@ -43,7 +46,9 @@ const Transactions = () => {
     formData.type === "Income" ? incomeCategories : expenseCategories;
 
   return (
+
     <div>
+      <CustomizedSanckbar open={open} setOpen={setOpen} />
       <Card>
         <CardHeader
           title="Transaction Section"

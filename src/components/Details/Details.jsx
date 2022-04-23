@@ -1,5 +1,8 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Divider, Card, CardHeader, CardContent, Typography, Grid } from "@material-ui/core";
+
+import { ExpenseContext } from "../../context/Context";
+
 import makeStyles from './style'
 import Transactions from "../transaction/Transactions";
 import List from "../List/List";
@@ -7,7 +10,8 @@ import List from "../List/List";
 
 const Details = () => {
   const classes = makeStyles();
-  
+  const { balance } = useContext(ExpenseContext)
+
   return (
           <Card className={classes.Details}>
         <CardHeader
@@ -18,7 +22,7 @@ const Details = () => {
         <Divider />
         <CardContent>
           <Typography align="center" variant="h5">
-            Balance : 50
+            Balance : ₹ {balance}
           </Typography>
         </CardContent>
         <Divider />

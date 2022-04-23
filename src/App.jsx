@@ -12,17 +12,22 @@ function App() {
       className={classes.grid}
       spacing={0}
       alignItems="center"
-      justify="center"
-      style={{ height: "100vh" }}
+      justifyContent="center"
+      style={{ height: "120vh" }}
     >
-      <Grid sm={7} xs={12}>
+      <Grid item xs={12} sm={8} className={classes.main}>
         <Details />
       </Grid>
       
-        <Grid sm={5} xs={12}>
-          <Charts title="Income" />
+      
+      <Grid item xs={12} sm={6} className={classes.mobile} >
+          <Charts title="Income"  />
         </Grid>
-        <Grid sm={5} xs={12}>
+
+        <Grid item xs={12} sm={4} className={classes.desktop} >
+          <Charts title="Income"  />
+        </Grid>
+        <Grid item xs={12} sm={6} className={classes.last}>
           <Charts title="Expense" />
         </Grid>
       
